@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Payment\PayPalController;
+use App\Http\Controllers\Payment\StripeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RevenueController;
@@ -36,7 +37,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Subscribe
-Route::get('/subscribe/{newsLatter}', [SubscribeController::class, 'subscribe'])->name('subscribe');
 
 // User Inter FAce
 Route::redirect('/', '/daban');
@@ -67,6 +67,10 @@ Route::post('/daban/checkout/pay', [CheckoutController::class, 'pay'])->name('ch
 Route::post('/daban/payment', [PayPalController::class, 'payment'])->name('payment');
 Route::get('/daban/cancel', [PayPalController::class, 'cancel'])->name('payment.cancel');
 Route::get('/daban/payment/success', [PayPalController::class, 'success'])->name('payment.success');
+
+Route::get('/daban/order/pay',[StripeController::class,'create'])->name('stripe.create');
+Route::post('/daban/order/stripe/payment-intent',[StripeController::class,'createStripePayment'])->name('stripe.paymentIntent');
+Route::get('/daban/order/stripe/callback',[StripeController::class,'confirm'])->name('stripe.return');
 
 // Authentication
 Route::middleware(['auth', 'role:admin,user'])->prefix('dashboard')->group(function () {
@@ -113,8 +117,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
     Route::get('restoreCategory', [CategoryController::class, 'RestoreAll'])->name('category.Restore.all');
     Route::delete('RestoreCategoryDestroy/{id}',  [CategoryController::class, 'Restoredestroy'])->name('category.Restoredestroy');
 
-    // Company Revenue
-    Route::get('/revenue', [RevenueController::class, 'revenue'])->name('revenue');
 });
 
 // login & Register
@@ -129,10 +131,3 @@ Route::middleware(['guest', 'throttle:authentication'])->group(function () {
 
 
 
-
-// // Store
-// Route::get('store/restore', [StoreController::class, 'restoreStore'])->name('store.restoreStore');
-// Route::resource('/store', StoreController::class);
-// Route::get('store/resto/one/{id}', [StoreController::class, 'resto'])->name('store.resto');
-// Route::get('restoreAll', [StoreController::class, 'restoreAll'])->name('store.restore.all');
-// Route::delete('RestoreStoreDestroy/{id}',  [StoreController::class, 'RestoreStoreDestroy'])->name('store.RestoreStoreDestroy');

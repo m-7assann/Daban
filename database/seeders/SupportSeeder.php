@@ -18,7 +18,7 @@ class SupportSeeder extends Seeder
         $support = [
             'address' => 'Palestine, Gaza City',
             'email' => 'm.7ass4n@gmail.com',
-            'phone' => '0599265058(972+)',
+            'phone' => ' 0599265058 (972+) ',
         ];
 
         Support::create($support);

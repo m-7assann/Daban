@@ -19,28 +19,28 @@ class UserSeeder extends Seeder
             'email' => 'mostafa@app.com',
             'phone' => '0595718476',
             'role' => 'admin',
-            'password' => Hash::make('1213'),
+            'password' => Hash::make('1020'),
         ]);
         User::create([
             'UsersName' => 'Mohammad Hassan',
             'email' => 'mohammed@app.com',
             'phone' => '0599265058',
             'role' => 'admin',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('1234'),
         ]);
         User::create([
             'UsersName' => 'Mohammad Asker',
             'email' => 'mohammedasker@app.com',
             'phone' => '0567960628',
             'role' => 'admin',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('1235'),
         ]);
         User::create([
             'UsersName' => 'Osama AlDajani',
             'email' => 'osama@app.com',
             'phone' => '0597460927',
             'role' => 'admin',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('1230'),
         ]);
     }
 }

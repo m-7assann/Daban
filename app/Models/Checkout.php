@@ -29,5 +29,7 @@ class Checkout extends Model
 {
     return $this->hasMany(Revenue::class);
 }
-
+    public function items(){
+        return $this->hasMany(Checkout::class , 'checkout_id');
+    }
 }
