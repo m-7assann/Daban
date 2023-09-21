@@ -218,7 +218,7 @@
                     <div class="col-lg-6 col-md-4">
                         <div class="inner">
                             <div class="bradcrumb-thumb">
-                                <img src="{{ asset('fas/assets/images/logo/logo-large.png') }}" alt="Image">
+                                <img src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" style="height: 100px;" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -451,44 +451,58 @@
         <div class="footer-top separator-top">
             <div class="container">
                 <div class="row">
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Support</h5>
-                           <div class="logo mb--30">
-                            <a href="index.html">
-                                <img class="light-logo" src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Logo Images" width="120" height="80">
-                            </a>
-                        </div>
-                        <div class="inner">
-                            <p><i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}</p>
+                            <div class="logo mb--30" style=" margin-bottom: 15px;">
+                                <a href="{{ route('home') }}">
+                                    {{-- <img class="light-logo" src="{{ asset('fas/assets/images/logo/daban_grey.png') }}" --}}
+                                    <img class="light-logo"
+                                    style="opacity: 0.6; filter: grayscale(1); height: 100px;"
+                                    src="{{ asset('fas/assets/images/logo/Daban.jpg') }}"
+                                    alt="Logo Images">
+                                </a>
+                            </div>
+                            <div class="inner">
 
-                            <ul class="support-list-item">
-                                <li><a href="https://mail.google.com/mail/u/0/#inbox"> <i
-                                            class="fal fa-envelope-open"></i> &nbsp;
-                                        {{ $support->email }}</a></li>
-                                <li><a href="tel:{{ $support->phone }}"> <i class="fal fa-phone-alt"></i> &nbsp;
-                                        {{ $support->phone }}</a></li>
-                            </ul>
-                        </div>
+                                <ul class="support-list-item">
+                                    <i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}
+                                    <li>
+                                        <a href="https://mail.google.com/mail/u/0/#inbox">
+                                            <i class="fal fa-envelope-open"></i>
+                                            &nbsp; {{ $support->email }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tel:{{ $support->phone }}">
+                                            <i class="fal fa-phone-alt"></i>
+                                            &nbsp; {{ $support->phone }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
                                 <ul>
-                                    <li><a href="{{route('home')}}">My Account</a></li>
+                                    <li><a href="{{ route('home') }}">My Account</a></li>
                                     <li><a href="{{ route('login') }}">Login / Register</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Quick Link</h5>
                             <div class="inner">
@@ -502,29 +516,31 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+
+                    {{-- <!-- Start Single Widget  -->
+                    <div class="col-lg-1 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
-                            <h5 class="widget-title">Download App</h5>
                             <div class="inner">
-                                <span>Save $3 With App & New User only</span>
-                                <div class="download-btn-group">
-                                    <div class="qr-code">
-                                        <img src="{{ asset('fas/assets/images/others/qr.png') }}" alt="Axilthemes">
-                                    </div>
-                                    <div class="app-link">
-                                        <a href="#">
-                                            <img src="{{ asset('fas/assets/images/others/app-store.png') }}" alt="App Store">
-                                        </a>
-                                        <a href="#">
-                                            <img src="{{ asset('fas/assets/images/others/play-store.png') }}" alt="Play Store">
-                                        </a>
-                                    </div>
-                                </div>
+                                <div style="background-color: #f6f7fb; width: 2px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Widget  --> --}}
+
+                    <!-- Start Single Widget (Map Widget Takes Two Columns) -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="axil-footer-widget">
+                            {{-- <h5 class="widget-title">Location</h5> --}}
+                            <div class="inner">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3401.743066883534!2d34.455341!3d31.5037454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14fd7f711080143d%3A0xe82e58c9eaecea6f!2z2LTYsdmD2Kkg2LbYqNin2YYg2YTZhNij2KzZh9iy2Kkg2KfZhNmD2YfYsdio2KfYptmK2Kkg2Ygg2KPYr9mI2KfYqiDYp9mE2LrYp9iy!5e0!3m2!1sen!2s!4v1694919425401!5m2!1sen!2s"
+                                    width="100%" height="308" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                 </div>
             </div>
         </div>
@@ -713,7 +729,7 @@
                                             <ul class="product-action d-flex-center mb--0">
                                                 <li class="add-to-cart"><a href="cart.html"
                                                         class="axil-btn btn-bg-primary">Add to Cart</a></li>
-                                    
+
                                             </ul>
                                             <!-- End Product Action  -->
 

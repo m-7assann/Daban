@@ -1,5 +1,5 @@
 /*------------------------
-    Footer Styles  
+    Footer Styles
 -------------------------*/
 
 .footer-top {
@@ -26,7 +26,7 @@
 
 
 /*----------------------
-    Footer Widget  
+    Footer Widget
 ----------------------*/
 
 .axil-footer-widget {
@@ -111,7 +111,7 @@
 
 
 /*-----------------------
-    Copyright Area  
+    Copyright Area
 ------------------------*/
 
 .copyright-default {
@@ -203,24 +203,24 @@
                 margin: 10px 20px;
                 letter-spacing: -0.025em;
                 @media #{$large-mobile} {
-                    margin-left: 0;   
+                    margin-left: 0;
                 }
             }
         }
     }
     .copyright-left {
        @media #{$smlg-device} {
-            text-align: center;  
+            text-align: center;
        }
        @media #{$large-mobile} {
-            flex-direction: column;  
+            flex-direction: column;
             align-items: center;
        }
 
         ul+ul {
             margin-left: 15px;
             @media #{$large-mobile} {
-                margin-left: -15px;   
+                margin-left: -15px;
             }
             li {
                 &::after {
@@ -376,7 +376,7 @@
 }
 
 /*-----------------------
-   Offer Popup Modal Area  
+   Offer Popup Modal Area
 ------------------------*/
 .offer-popup-modal {
     position: fixed;
@@ -400,7 +400,7 @@
         background-repeat: no-repeat;
         background-position: center right;
         @media only screen and (max-width: 767px) {
-            width: 100%;   
+            width: 100%;
             padding: 40px 30px;
             max-height: 400px;
             background-image: none;
@@ -425,7 +425,7 @@
             @media only screen and (max-width: 767px){
                 height: 30px;
                 width: 30px;
-                font-size: 12px;     
+                font-size: 12px;
                 top: -30px;
                 right: -15px;
             }
@@ -457,7 +457,7 @@
                 .countdown-section {
                     background-color: var(--color-lighter);
                 }
-                
+
             }
             .axil-btn {
                 i {

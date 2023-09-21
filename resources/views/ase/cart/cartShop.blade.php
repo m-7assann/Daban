@@ -9,22 +9,22 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('fas/assets/images/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('fas/assets/images/favicon.png') }}">
 
     <!-- CSS
     ============================================ -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/font-awesome.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/flaticon/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/slick-theme.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/jquery-ui.min.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/sal.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/vendor/base.css')}}">
-    <link rel="stylesheet" href="{{asset('fas/assets/css/style.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/flaticon/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/sal.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/vendor/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('fas/assets/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
     <style>
         .toast-message {
@@ -74,8 +74,7 @@
                         <div class="header-top-link">
                             <ul class="quick-link">
                                 @if (auth()->guest())
-
-                                <li><a href="{{route('login')}}">Sign In</a></li>
+                                    <li><a href="{{ route('login') }}">Sign In</a></li>
                                 @endif
                             </ul>
                         </div>
@@ -89,11 +88,12 @@
             <div class="container">
                 <div class="header-navbar">
                     <div class="header-brand">
-                        <a href="{{route('front.index')}}" class="logo logo-dark">
-                            <img src="{{asset('fas/assets/images/logo/Daban.jpg')}}" alt="Site Logo" width="120" height="80">
+                        <a href="{{ route('front.index') }}" class="logo logo-dark">
+                            <img src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Site Logo" width="120"
+                                height="80">
                         </a>
                         <a href="index.html" class="logo logo-light">
-                            <img src="{{asset('fas/assets/images/logo/logo-light.png')}}" alt="Site Logo">
+                            <img src="{{ asset('fas/assets/images/logo/logo-light.png') }}" alt="Site Logo">
                         </a>
                     </div>
                     <div class="header-main-nav">
@@ -102,17 +102,17 @@
                             <button class="mobile-close-btn mobile-nav-toggler"><i class="fas fa-times"></i></button>
                             <div class="mobile-nav-brand">
                                 <a href="index.html" class="logo">
-                                    <img src="{{asset('fas/assets/images/logo/logo1.png')}}" alt="Site Logo">
+                                    <img src="{{ asset('fas/assets/images/logo/logo1.png') }}" alt="Site Logo">
                                 </a>
                             </div>
                             <ul class="mainmenu">
                                 <li>
-                                    <a href="{{route('front.index')}}">Home</a>
+                                    <a href="{{ route('front.index') }}">Home</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Shop</a>
                                     <ul class="axil-submenu">
-                                        <li><a href="{{route('front.sidebar')}}">Shop With Sidebar</a></li>
+                                        <li><a href="{{ route('front.sidebar') }}">Shop With Sidebar</a></li>
                                     </ul>
 
                                 </li>
@@ -125,8 +125,8 @@
                         <ul class="action-list">
                             <li class="axil-search d-xl-block d-none">
                                 <input type="search" class="placeholder product-search-input" name="search2"
-                                    id="search2" value="" maxlength="128" placeholder="?What are you looking for"
-                                    autocomplete="off">
+                                    id="search2" value="" maxlength="128"
+                                    placeholder="?What are you looking for" autocomplete="off">
                                 <button type="submit" class="icon wooc-btn-search">
                                     <i class="flaticon-magnifying-glass"></i>
                                 </button>
@@ -138,7 +138,7 @@
                             </li>
                             <li class="shopping-cart">
                                 <a href="#" class="cart-dropdown-btn">
-                                    <span class="cart-count" id="carts-count">{{count($carts)}}</span>
+                                    <span class="cart-count" id="carts-count">{{ count($carts) }}</span>
                                     <i class="flaticon-shopping-cart"></i>
                                 </a>
                             </li>
@@ -150,14 +150,14 @@
                                     <span class="title">QUICKLINKS</span>
                                     <ul>
                                         <li>
-                                            <a href="{{route('home')}}">My Account</a>
+                                            <a href="{{ route('home') }}">My Account</a>
                                         </li>
                                     </ul>
                                     @if (auth()->guest())
-
-                                    <a href="{{route('login')}}" class="axil-btn btn-bg-primary">Login</a>
-                                    <div class="reg-footer text-center">No account yet? <a href="{{route('register')}}"
-                                            class="btn-link">REGISTER HERE.</a></div>
+                                        <a href="{{ route('login') }}" class="axil-btn btn-bg-primary">Login</a>
+                                        <div class="reg-footer text-center">No account yet? <a
+                                                href="{{ route('register') }}" class="btn-link">REGISTER HERE.</a>
+                                        </div>
                                     @endif
                                 </div>
                             </li>
@@ -218,27 +218,28 @@
                             </thead>
                             <tbody>
                                 @foreach ($carts as $cart)
-                                <tr id="tr_{{$cart->product_id}}">
-                                    <td class="product-remove"><button type="button"
-                                            onclick="removeProduct({{$cart->product_id}}, this , 'table')"
-                                            class="remove-wishlist"><i class="fal fa-times"></i></button></td>
-                                    <td class="product-thumbnail"><a
-                                            href="{{route('front.productItem', $cart->product_id)}}"><img
-                                                src="{{ Storage::url($cart->product->image) }}"
-                                                alt="Digital Product"></a></td>
-                                    <td class="product-title" style="text-align: center"><a
-                                            href="{{route('front.productItem', $cart->product_id)}}">{{$cart->product->productName}}</a>
-                                    </td>
-                                    <td class="product-price" style=" text-align: center;" data-title="Price"><span
-                                            class="currency-symbol">$</span>{{!$cart->product->flag ?
-                                        $cart->product->price : $cart->product->discount}}</td>
-                                    <td class="product-quantity" data-title="Qty" style=" text-align: center;">
-                                        {{$cart->quantity}}
-                                    </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span
-                                            class="currency-symbol">$</span>{{$cart->quantity * (!$cart->product->flag ?
-                                        $cart->product->price : $cart->product->discount)}}</td>
-                                </tr>
+                                    <tr id="tr_{{ $cart->product_id }}">
+                                        <td class="product-remove"><button type="button"
+                                                onclick="removeProduct({{ $cart->product_id }}, this , 'table')"
+                                                class="remove-wishlist"><i class="fal fa-times"></i></button></td>
+                                        <td class="product-thumbnail"><a
+                                                href="{{ route('front.productItem', $cart->product_id) }}"><img
+                                                    src="{{ Storage::url($cart->product->image) }}"
+                                                    alt="Digital Product"></a></td>
+                                        <td class="product-title" style="text-align: center"><a
+                                                href="{{ route('front.productItem', $cart->product_id) }}">{{ $cart->product->productName }}</a>
+                                        </td>
+                                        <td class="product-price" style=" text-align: center;" data-title="Price">
+                                            <span
+                                                class="currency-symbol">$</span>{{ !$cart->product->flag ? $cart->product->price : $cart->product->discount }}
+                                        </td>
+                                        <td class="product-quantity" data-title="Qty" style=" text-align: center;">
+                                            {{ $cart->quantity }}
+                                        </td>
+                                        <td class="product-subtotal" data-title="Subtotal"><span
+                                                class="currency-symbol">$</span>{{ $cart->quantity * (!$cart->product->flag ? $cart->product->price : $cart->product->discount) }}
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                             </tbody>
@@ -258,7 +259,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="{{ route('checkout') }}" class="axil-btn btn-bg-primary checkout-btn">Process
+                                <a href="{{ route('checkout') }}"
+                                    class="axil-btn btn-bg-primary checkout-btn">Process
                                     to
                                     Checkout</a>
                             </div>
@@ -278,7 +280,7 @@
                 <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
-                            <img src="{{asset('fas/assets/images/icons/service1.png')}}" alt="Service">
+                            <img src="{{ asset('fas/assets/images/icons/service1.png') }}" alt="Service">
                         </div>
                         <div class="content">
                             <h6 class="title">Fast &amp; Secure Delivery</h6>
@@ -289,7 +291,7 @@
                 <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
-                            <img src="{{asset('fas/assets/images/icons/service2.png')}}" alt="Service">
+                            <img src="{{ asset('fas/assets/images/icons/service2.png') }}" alt="Service">
                         </div>
                         <div class="content">
                             <h6 class="title">Money Back Guarantee</h6>
@@ -300,7 +302,7 @@
                 <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
-                            <img src="{{asset('fas/assets/images/icons/service3.png')}}" alt="Service">
+                            <img src="{{ asset('fas/assets/images/icons/service3.png') }}" alt="Service">
                         </div>
                         <div class="content">
                             <h6 class="title">24 Hour Return Policy</h6>
@@ -311,7 +313,7 @@
                 <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
-                            <img src="{{asset('fas/assets/images/icons/service4.png')}}" alt="Service">
+                            <img src="{{ asset('fas/assets/images/icons/service4.png') }}" alt="Service">
                         </div>
                         <div class="content">
                             <h6 class="title">Pro Quality Support</h6>
@@ -328,44 +330,56 @@
         <div class="footer-top separator-top">
             <div class="container">
                 <div class="row">
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Support</h5>
-                            <div class="logo mb--30">
-                            <a href="{{ route('home') }}">
-                                <img class="light-logo" src="{{asset('fas/assets/images/logo/Daban.jpg')}}" alt="Logo Images" width="120" height="80">
-                            </a>
-                        </div>
+                            <div class="logo mb--30" style=" margin-bottom: 15px;">
+                                <a href="{{ route('home') }}">
+                                    {{-- <img class="light-logo" src="{{ asset('fas/assets/images/logo/daban_grey.png') }}" --}}
+                                    <img class="light-logo" style="opacity: 0.6; filter: grayscale(1); height: 100px;"
+                                        src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Logo Images">
+                                </a>
+                            </div>
                             <div class="inner">
-                                <p><i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}</p>
 
                                 <ul class="support-list-item">
-                                    <li><a href="https://mail.google.com/mail/u/0/#inbox"> <i
-                                                class="fal fa-envelope-open"></i> &nbsp;
-                                            {{ $support->email }}</a></li>
-                                    <li><a href="tel:{{ $support->phone }}"> <i class="fal fa-phone-alt"></i> &nbsp;
-                                            {{ $support->phone }}</a></li>
+                                    <i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}
+                                    <li>
+                                        <a href="https://mail.google.com/mail/u/0/#inbox">
+                                            <i class="fal fa-envelope-open"></i>
+                                            &nbsp; {{ $support->email }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tel:{{ $support->phone }}">
+                                            <i class="fal fa-phone-alt"></i>
+                                            &nbsp; {{ $support->phone }}
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
                                 <ul>
-                                    <li><a href="{{route('home')}}">My Account</a></li>
+                                    <li><a href="{{ route('home') }}">My Account</a></li>
                                     <li><a href="{{ route('login') }}">Login / Register</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Quick Link</h5>
                             <div class="inner">
@@ -379,31 +393,31 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+
+                    {{-- <!-- Start Single Widget  -->
+                    <div class="col-lg-1 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
-                            <h5 class="widget-title">Download App</h5>
                             <div class="inner">
-                                <span>Save $3 With App & New User only</span>
-                                <div class="download-btn-group">
-                                    <div class="qr-code">
-                                        <img src="{{asset('fas/assets/images/others/qr.png')}}" alt="Axilthemes">
-                                    </div>
-                                    <div class="app-link">
-                                        <a href="#">
-                                            <img src="{{asset('fas/assets/images/others/app-store.png')}}"
-                                                alt="App Store">
-                                        </a>
-                                        <a href="#">
-                                            <img src="{{asset('fas/assets/images/others/play-store.png')}}"
-                                                alt="Play Store">
-                                        </a>
-                                    </div>
-                                </div>
+                                <div style="background-color: #f6f7fb; width: 2px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Widget  --> --}}
+
+                    <!-- Start Single Widget (Map Widget Takes Two Columns) -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="axil-footer-widget">
+                            {{-- <h5 class="widget-title">Location</h5> --}}
+                            <div class="inner">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3401.743066883534!2d34.455341!3d31.5037454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14fd7f711080143d%3A0xe82e58c9eaecea6f!2z2LTYsdmD2Kkg2LbYqNin2YYg2YTZhNij2KzZh9iy2Kkg2KfZhNmD2YfYsdio2KfYptmK2Kkg2Ygg2KPYr9mI2KfYqiDYp9mE2LrYp9iy!5e0!3m2!1sen!2s!4v1694919425401!5m2!1sen!2s"
+                                    width="100%" height="308" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                 </div>
             </div>
         </div>
@@ -414,7 +428,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-4">
                         <div class="social-share">
-                            <a href="https://www.facebook.com/dabancom?locale=ar_AR"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/dabancom?locale=ar_AR"><i
+                                    class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/daban.co/"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -426,7 +441,8 @@
                                         document.write(new Date().getFullYear());
                                     </script>
                                     , made with ❤️ by
-                                    <a target="_blank" class="footer-link fw-bolder">Mostafa, Mohammed, Osama & Mohammed</a>
+                                    <a target="_blank" class="footer-link fw-bolder">Mostafa, Mohammed, Osama &
+                                        Mohammed</a>
                                 </li>
                             </ul>
                         </div>
@@ -436,11 +452,14 @@
                             class="copyright-right d-flex flex-wrap justify-content-xl-end justify-content-center align-items-center">
                             <span class="card-text">Accept For</span>
                             <ul class="payment-icons-bottom quick-link">
-                                <li><img src="{{asset('fas/assets/images/icons/cart/cart-1.png')}}" alt="paypal cart">
+                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-1.png') }}"
+                                        alt="paypal cart">
                                 </li>
-                                <li><img src="{{asset('fas/assets/images/icons/cart/cart-2.png')}}" alt="paypal cart">
+                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-2.png') }}"
+                                        alt="paypal cart">
                                 </li>
-                                <li><img src="{{asset('fas/assets/images/icons/cart/cart-5.png')}}" alt="paypal cart">
+                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-5.png') }}"
+                                        alt="paypal cart">
                                 </li>
                             </ul>
                         </div>
@@ -469,39 +488,39 @@
                                         <div
                                             class="single-product-thumbnail product-large-thumbnail axil-product thumbnail-badge zoom-gallery">
                                             <div class="thumbnail">
-                                                <img src="{{asset('fas/assets/images/product/product-big-01.png')}}"
+                                                <img src="{{ asset('fas/assets/images/product/product-big-01.png') }}"
                                                     alt="Product Images">
                                                 <div class="label-block label-right">
                                                     <div class="product-badget">20% OFF</div>
                                                 </div>
                                                 <div class="product-quick-view position-view">
-                                                    <a href="{{asset('fas/assets/images/product/product-big-01.png')}}"
+                                                    <a href="{{ asset('fas/assets/images/product/product-big-01.png') }}"
                                                         class="popup-zoom">
                                                         <i class="far fa-search-plus"></i>
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="thumbnail">
-                                                <img src="{{asset('fas/assets/images/product/product-big-02.png')}}"
+                                                <img src="{{ asset('fas/assets/images/product/product-big-02.png') }}"
                                                     alt="Product Images">
                                                 <div class="label-block label-right">
                                                     <div class="product-badget">20% OFF</div>
                                                 </div>
                                                 <div class="product-quick-view position-view">
-                                                    <a href="{{asset('fas/assets/images/product/product-big-02.png')}}"
+                                                    <a href="{{ asset('fas/assets/images/product/product-big-02.png') }}"
                                                         class="popup-zoom">
                                                         <i class="far fa-search-plus"></i>
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="thumbnail">
-                                                <img src="{{asset('fas/assets/images/product/product-big-03.png')}}"
+                                                <img src="{{ asset('fas/assets/images/product/product-big-03.png') }}"
                                                     alt="Product Images">
                                                 <div class="label-block label-right">
                                                     <div class="product-badget">20% OFF</div>
                                                 </div>
                                                 <div class="product-quick-view position-view">
-                                                    <a href="{{asset('fas/assets/images/product/product-big-03.png')}}"
+                                                    <a href="{{ asset('fas/assets/images/product/product-big-03.png') }}"
                                                         class="popup-zoom">
                                                         <i class="far fa-search-plus"></i>
                                                     </a>
@@ -512,15 +531,15 @@
                                     <div class="col-lg-2 order-lg-1">
                                         <div class="product-small-thumb small-thumb-wrapper">
                                             <div class="small-thumb-img">
-                                                <img src="{{asset('fas/assets/images/product/product-thumb/thumb-08.png')}}"
+                                                <img src="{{ asset('fas/assets/images/product/product-thumb/thumb-08.png') }}"
                                                     alt="thumb image">
                                             </div>
                                             <div class="small-thumb-img">
-                                                <img src="{{asset('fas/assets/images/product/product-thumb/thumb-07.png')}}"
+                                                <img src="{{ asset('fas/assets/images/product/product-thumb/thumb-07.png') }}"
                                                     alt="thumb image">
                                             </div>
                                             <div class="small-thumb-img">
-                                                <img src="{{asset('fas/assets/images/product/product-thumb/thumb-09.png')}}"
+                                                <img src="{{ asset('fas/assets/images/product/product-thumb/thumb-09.png') }}"
                                                     alt="thumb image">
                                             </div>
                                         </div>
@@ -532,7 +551,7 @@
                                     <div class="inner">
                                         <div class="product-rating">
                                             <div class="star-rating">
-                                                <img src="{{asset('fas/assets/images/icons/rate.png')}}"
+                                                <img src="{{ asset('fas/assets/images/icons/rate.png') }}"
                                                     alt="Rate Images">
                                             </div>
                                             <div class="review-link">
@@ -596,7 +615,7 @@
                                             <ul class="product-action d-flex-center mb--0">
                                                 <li class="add-to-cart"><a href="cart.html"
                                                         class="axil-btn btn-bg-primary">Add to Cart</a></li>
-                                     
+
                                             </ul>
                                             <!-- End Product Action  -->
 
@@ -629,8 +648,8 @@
             </div>
             <div class="card-body">
                 <div class="search-result-header">
-                    <span class="filter-results">Result (<span style="color: #3577F0; font-size:19px;">{{
-                            $products->count() }}</span>)
+                    <span class="filter-results">Result (<span
+                            style="color: #3577F0; font-size:19px;">{{ $products->count() }}</span>)
                         Found</span>
                     <a href="{{ route('front.sidebar') }}" class="view-all">View All</a>
                 </div>
@@ -654,29 +673,32 @@
             <div class="cart-body">
                 <ul class="cart-item-list" id="cart-list-container">
                     @foreach ($carts as $cart)
-                    <li class="cart-item" id="li_{{$cart->product_id}}">
-                        <div class="item-img">
-                            <a href="{{route('front.productItem', $cart->product_id)}}"><img
-                                    src="{{Storage::url($cart->product->image)}}" alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn" onclick="removeProduct({{$cart->product_id}}, this ,'list')"><i
-                                    class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title"><a
-                                    href="{{route('front.productItem', $cart->product_id)}}">{{$cart->product->productName}}</a>
-                            </h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>{{!$cart->product->flag ?
-                                $cart->product->price : $cart->product->discount}}</div>
-                            <div class="pro-qty item-quantity">
-                                <span class="dec qtybtn"
-                                    onclick="changeQuantity({{ $cart->product_id }}, 'dec', this)">-</span>
-                                <input type="number" class="quantity-input" id="quantity_{{ $cart->product_id }}"
-                                    value="{{ $cart->quantity }}" disabled>
-                                <span class="inc qtybtn"
-                                    onclick="changeQuantity({{ $cart->product_id }}, 'inc', this)">+</span>
+                        <li class="cart-item" id="li_{{ $cart->product_id }}">
+                            <div class="item-img">
+                                <a href="{{ route('front.productItem', $cart->product_id) }}"><img
+                                        src="{{ Storage::url($cart->product->image) }}" alt="Commodo Blown Lamp"></a>
+                                <button class="close-btn"
+                                    onclick="removeProduct({{ $cart->product_id }}, this ,'list')"><i
+                                        class="fas fa-times"></i></button>
                             </div>
-                        </div>
-                    </li>
+                            <div class="item-content">
+                                <h3 class="item-title"><a
+                                        href="{{ route('front.productItem', $cart->product_id) }}">{{ $cart->product->productName }}</a>
+                                </h3>
+                                <div class="item-price"><span
+                                        class="currency-symbol">$</span>{{ !$cart->product->flag ? $cart->product->price : $cart->product->discount }}
+                                </div>
+                                <div class="pro-qty item-quantity">
+                                    <span class="dec qtybtn"
+                                        onclick="changeQuantity({{ $cart->product_id }}, 'dec', this)">-</span>
+                                    <input type="number" class="quantity-input"
+                                        id="quantity_{{ $cart->product_id }}" value="{{ $cart->quantity }}"
+                                        disabled>
+                                    <span class="inc qtybtn"
+                                        onclick="changeQuantity({{ $cart->product_id }}, 'inc', this)">+</span>
+                                </div>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -687,8 +709,8 @@
 
                 </h3>
                 <div class="group-btn">
-                    <a href="{{route('cart')}}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
-                    <a href="{{route('checkout')}}" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+                    <a href="{{ route('cart') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                    <a href="{{ route('checkout') }}" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
                 </div>
             </div>
         </div>
@@ -754,14 +776,14 @@
 
         // Remove Product from Slide Cart
 
-        function removeProduct(id, ref , type) {
+        function removeProduct(id, ref, type) {
             let url = `/daban/cart/${id}`;
             axios.delete(url).then((response) => {
                 toastr.success(response.data.message);
-                if(type=='table' ){
+                if (type == 'table') {
                     ref.closest('tr').remove();
                     document.getElementById(`li_${id}`).remove();
-                }else{
+                } else {
                     ref.closest('li').remove();
                     document.getElementById(`tr_${id}`).remove();
 
@@ -796,7 +818,6 @@
                 }
             }, 1);
         }
-
     </script>
 </body>
 

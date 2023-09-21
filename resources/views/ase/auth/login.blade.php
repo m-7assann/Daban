@@ -58,7 +58,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
               <a href="{{route('front.index')}}" class="logo logo-dark">
-                <img src="{{asset('fas/assets/images/logo/Daban.jpg')}}" alt="Site Logo" width="120" height="80">
+                <img src="{{asset('fas/assets/images/logo/Daban.jpg')}}" alt="Site Logo" height="180">
               </a>
             </div>
 

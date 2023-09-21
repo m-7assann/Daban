@@ -57,7 +57,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="{{ route('home') }}" class="app-brand-link">
-                        <img src="{{asset('ase/assets/img/avatars/logo-large.png')}}" alt
+                        <img src="{{asset('ase/assets/img/avatars/logo-large.png')}}" style="opacity: 0.6; filter: grayscale(1);" alt
                             class="w-px-40 h-auto rounded-circle" />
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">Dashboard</span>
                     </a>

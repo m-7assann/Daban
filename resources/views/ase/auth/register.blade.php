@@ -7,7 +7,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title> -daban | Register</title>
+  <title> daban | Register</title>
 
   <meta name="description" content="" />
 
@@ -55,9 +55,9 @@
         <div class="card">
           <div class="card-body">
             <!-- Logo -->
-            <div class="app-brand justify-content-center">
+            <div class="app-brand justify-content-center" style="margin-bottom: 0.5rem;">
               <a href="{{route('front.index')}}" class="logo logo-dark">
-                <img src="{{asset('fas/assets/images/logo/Daban.jpg')}}" alt="Site Logo" width="120" height="80">
+                <img src="{{asset('fas/assets/images/logo/Daban.jpg')}}" alt="Site Logo" width="180" height="180">
               </a>
             </div>
             <!-- /Logo -->

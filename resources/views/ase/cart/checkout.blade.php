@@ -66,13 +66,13 @@
                         </div>
                     </div>
                     @if (auth()->guest())
-                    <div class="col-lg-6 col-sm-6 col-12">
-                        <div class="header-top-link">
-                            <ul class="quick-link">
-                                <li><a href="{{ route('login') }}">Sign In</a></li>
-                            </ul>
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="header-top-link">
+                                <ul class="quick-link">
+                                    <li><a href="{{ route('login') }}">Sign In</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
             </div>
@@ -84,7 +84,8 @@
                 <div class="header-navbar">
                     <div class="header-brand">
                         <a href="{{ route('front.index') }}" class="logo logo-dark">
-                            <img src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Site Logo" width="120" height="80">
+                            <img src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Site Logo" width="120"
+                                height="80">
                         </a>
                         <a href="index.html" class="logo logo-light">
                             <img src="{{ asset('fas/assets/images/logo/logo-light.png') }}" alt="Site Logo">
@@ -119,8 +120,8 @@
                         <ul class="action-list">
                             <li class="axil-search d-xl-block d-none">
                                 <input type="search" class="placeholder product-search-input" name="search2"
-                                    id="search2" value="" maxlength="128" placeholder="?What are you looking for"
-                                    autocomplete="off">
+                                    id="search2" value="" maxlength="128"
+                                    placeholder="?What are you looking for" autocomplete="off">
                                 <button type="submit" class="icon wooc-btn-search">
                                     <i class="flaticon-magnifying-glass"></i>
                                 </button>
@@ -153,10 +154,10 @@
                                         </li>
                                     </ul>
                                     @if (auth()->guest())
-                                    <a href="{{ route('login') }}" class="axil-btn btn-bg-primary">Login</a>
-                                    <div class="reg-footer text-center">No account yet? <a
-                                            href="{{ route('register') }}" class="btn-link">REGISTER HERE.</a>
-                                    </div>
+                                        <a href="{{ route('login') }}" class="axil-btn btn-bg-primary">Login</a>
+                                        <div class="reg-footer text-center">No account yet? <a
+                                                href="{{ route('register') }}" class="btn-link">REGISTER HERE.</a>
+                                        </div>
                                     @endif
                                 </div>
                             </li>
@@ -206,10 +207,10 @@
                             <div class="axil-checkout-notice">
                                 <div class="axil-toggle-box">
                                     @if (auth()->guest())
-                                    <div class="toggle-bar"><i class="fas fa-user"></i> Returning customer ? <a
-                                            href="{{ route('login') }}" class="toggle-btn">Click here to
-                                            login</a>
-                                    </div>
+                                        <div class="toggle-bar"><i class="fas fa-user"></i> Returning customer ? <a
+                                                href="{{ route('login') }}" class="toggle-btn">Click here to
+                                                login</a>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
@@ -220,12 +221,11 @@
                                         <div class="form-group">
                                             <label>Full Name <span>*</span></label>
                                             @if (auth()->check() && auth()->user()->id !== $user->id)
-                                            <input type="text" value="{{ auth()->user()->UsersName }}" {{
-                                                auth()->check() && auth()->user()->id
-                                            === $user->id ? '' : 'disabled' }}>
+                                                <input type="text" value="{{ auth()->user()->UsersName }}"
+                                                    {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
                                             @else
-                                            <input type="text" value="" {{ auth()->check() && auth()->user()->id
-                                            === $user->id ? '' : 'disabled' }}>
+                                                <input type="text" value=""
+                                                    {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
                                             @endif
                                         </div>
                                     </div>
@@ -253,23 +253,22 @@
                                 <div class="form-group">
                                     <label>Phone <span>*</span></label>
                                     @if (auth()->check() && auth()->user()->id !== $user->id)
-                                    <input type="number" value="{{ auth()->user()->phone }}" {{ auth()->check() &&
-                                    auth()->user()->id
-                                    === $user->id ? '' : 'disabled' }}>
+                                        <input type="number" value="{{ auth()->user()->phone }}"
+                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
                                     @else
-                                    <input type="number" value="" {{ auth()->check() && auth()->user()->id
-                                    === $user->id ? '' : 'disabled' }}>
+                                        <input type="number" value=""
+                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
                                     @endif
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address <span>*</span></label>
 
                                     @if (auth()->check() && auth()->user()->id !== $user->id)
-                                    <input type="email" value="{{ auth()->user()->email }}" {{ auth()->check() &&
-                                    auth()->user()->id === $user->id ? '' : 'disabled' }}>
+                                        <input type="email" value="{{ auth()->user()->email }}"
+                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
                                     @else
-                                    <input type="email" value="" {{ auth()->check() && auth()->user()->id === $user->id
-                                    ? '' : 'disabled' }}>
+                                        <input type="email" value=""
+                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
                                     @endif
                                 </div>
                             </div>
@@ -287,13 +286,12 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($carts as $cart)
-                                            <tr class="order-product">
-                                                <td>{{ $cart->product->productName }}<span class="quantity">
-                                                        x{{ $cart->quantity }}</span></td>
-                                                <td>${{ $cart->quantity * (!$cart->product->flag ? $cart->product->price
-                                                    : $cart->product->discount) }}
-                                                </td>
-                                            </tr>
+                                                <tr class="order-product">
+                                                    <td>{{ $cart->product->productName }}<span class="quantity">
+                                                            x{{ $cart->quantity }}</span></td>
+                                                    <td>${{ $cart->quantity * (!$cart->product->flag ? $cart->product->price : $cart->product->discount) }}
+                                                    </td>
+                                                </tr>
                                             @endforeach
 
                                             <tr class="order-total">
@@ -385,44 +383,56 @@
         <div class="footer-top separator-top">
             <div class="container">
                 <div class="row">
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Support</h5>
-                           <div class="logo mb--30">
-                            <a href="index.html">
-                                <img class="light-logo" src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Logo Images" width="120" height="80">
-                            </a>
-                        </div>
+                            <div class="logo mb--30" style=" margin-bottom: 15px;">
+                                <a href="{{ route('home') }}">
+                                    {{-- <img class="light-logo" src="{{ asset('fas/assets/images/logo/daban_grey.png') }}" --}}
+                                    <img class="light-logo" style="opacity: 0.6; filter: grayscale(1); height: 100px;"
+                                        src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Logo Images">
+                                </a>
+                            </div>
                             <div class="inner">
-                                <p><i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}</p>
 
                                 <ul class="support-list-item">
-                                    <li><a href="https://mail.google.com/mail/u/0/#inbox"> <i
-                                                class="fal fa-envelope-open"></i> &nbsp;
-                                            {{ $support->email }}</a></li>
-                                    <li><a href="tel:{{ $support->phone }}"> <i class="fal fa-phone-alt"></i> &nbsp;
-                                            {{ $support->phone }}</a></li>
+                                    <i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}
+                                    <li>
+                                        <a href="https://mail.google.com/mail/u/0/#inbox">
+                                            <i class="fal fa-envelope-open"></i>
+                                            &nbsp; {{ $support->email }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tel:{{ $support->phone }}">
+                                            <i class="fal fa-phone-alt"></i>
+                                            &nbsp; {{ $support->phone }}
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
                                 <ul>
-                                    <li><a href="{{route('home')}}">My Account</a></li>
+                                    <li><a href="{{ route('home') }}">My Account</a></li>
                                     <li><a href="{{ route('login') }}">Login / Register</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Quick Link</h5>
                             <div class="inner">
@@ -436,31 +446,31 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <!-- Start Single Widget  -->
-                    <div class="col-lg-3 col-sm-6">
+
+                    {{-- <!-- Start Single Widget  -->
+                    <div class="col-lg-1 col-md-6 col-sm-6">
                         <div class="axil-footer-widget">
-                            <h5 class="widget-title">Download App</h5>
                             <div class="inner">
-                                <span>Save $3 With App & New User only</span>
-                                <div class="download-btn-group">
-                                    <div class="qr-code">
-                                        <img src="{{ asset('fas/assets/images/others/qr.png') }}" alt="Axilthemes">
-                                    </div>
-                                    <div class="app-link">
-                                        <a href="#">
-                                            <img src="{{ asset('fas/assets/images/others/app-store.png') }}"
-                                                alt="App Store">
-                                        </a>
-                                        <a href="#">
-                                            <img src="{{ asset('fas/assets/images/others/play-store.png') }}"
-                                                alt="Play Store">
-                                        </a>
-                                    </div>
-                                </div>
+                                <div style="background-color: #f6f7fb; width: 2px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Widget  --> --}}
+
+                    <!-- Start Single Widget (Map Widget Takes Two Columns) -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="axil-footer-widget">
+                            {{-- <h5 class="widget-title">Location</h5> --}}
+                            <div class="inner">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3401.743066883534!2d34.455341!3d31.5037454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14fd7f711080143d%3A0xe82e58c9eaecea6f!2z2LTYsdmD2Kkg2LbYqNin2YYg2YTZhNij2KzZh9iy2Kkg2KfZhNmD2YfYsdio2KfYptmK2Kkg2Ygg2KPYr9mI2KfYqiDYp9mE2LrYp9iy!5e0!3m2!1sen!2s!4v1694919425401!5m2!1sen!2s"
+                                    width="100%" height="308" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
+
                 </div>
             </div>
         </div>
@@ -471,7 +481,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-4">
                         <div class="social-share">
-                            <a href="https://www.facebook.com/dabancom?locale=ar_AR"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/dabancom?locale=ar_AR"><i
+                                    class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/daban.co/"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -481,10 +492,10 @@
                                 <li style="width: 550px"> ©
                                     <script>
                                         document.write(new Date().getFullYear());
-
                                     </script>
                                     , made with ❤️ by
-                                    <a target="_blank" class="footer-link fw-bolder">Mostafa, Mohammed, Osama & Mohammed</a>
+                                    <a target="_blank" class="footer-link fw-bolder">Mostafa, Mohammed, Osama &
+                                        Mohammed</a>
                                 </li>
                             </ul>
                         </div>
@@ -494,11 +505,14 @@
                             class="copyright-right d-flex flex-wrap justify-content-xl-end justify-content-center align-items-center">
                             <span class="card-text">Accept For</span>
                             <ul class="payment-icons-bottom quick-link">
-                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-1.png') }}" alt="paypal cart">
+                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-1.png') }}"
+                                        alt="paypal cart">
                                 </li>
-                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-2.png') }}" alt="paypal cart">
+                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-2.png') }}"
+                                        alt="paypal cart">
                                 </li>
-                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-5.png') }}" alt="paypal cart">
+                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-5.png') }}"
+                                        alt="paypal cart">
                                 </li>
                             </ul>
                         </div>
@@ -550,29 +564,32 @@
             <div class="cart-body">
                 <ul class="cart-item-list" id="cart-list-container">
                     @foreach ($carts as $cart)
-                    <li class="cart-item" id="li_{{$cart->product_id}}">
-                        <div class="item-img">
-                            <a href="{{route('front.productItem', $cart->product_id)}}"><img
-                                    src="{{Storage::url($cart->product->image)}}" alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn" onclick="removeProduct({{$cart->product_id}}, this ,'list')"><i
-                                    class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title"><a
-                                    href="{{route('front.productItem', $cart->product_id)}}">{{$cart->product->productName}}</a>
-                            </h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>{{!$cart->product->flag ?
-                                $cart->product->price : $cart->product->discount}}</div>
-                            <div class="pro-qty item-quantity">
-                                <span class="dec qtybtn"
-                                    onclick="changeQuantity({{ $cart->product_id }}, 'dec', this)">-</span>
-                                <input type="number" class="quantity-input" id="quantity_{{ $cart->product_id }}"
-                                    value="{{ $cart->quantity }}" disabled>
-                                <span class="inc qtybtn"
-                                    onclick="changeQuantity({{ $cart->product_id }}, 'inc', this)">+</span>
+                        <li class="cart-item" id="li_{{ $cart->product_id }}">
+                            <div class="item-img">
+                                <a href="{{ route('front.productItem', $cart->product_id) }}"><img
+                                        src="{{ Storage::url($cart->product->image) }}" alt="Commodo Blown Lamp"></a>
+                                <button class="close-btn"
+                                    onclick="removeProduct({{ $cart->product_id }}, this ,'list')"><i
+                                        class="fas fa-times"></i></button>
                             </div>
-                        </div>
-                    </li>
+                            <div class="item-content">
+                                <h3 class="item-title"><a
+                                        href="{{ route('front.productItem', $cart->product_id) }}">{{ $cart->product->productName }}</a>
+                                </h3>
+                                <div class="item-price"><span
+                                        class="currency-symbol">$</span>{{ !$cart->product->flag ? $cart->product->price : $cart->product->discount }}
+                                </div>
+                                <div class="pro-qty item-quantity">
+                                    <span class="dec qtybtn"
+                                        onclick="changeQuantity({{ $cart->product_id }}, 'dec', this)">-</span>
+                                    <input type="number" class="quantity-input"
+                                        id="quantity_{{ $cart->product_id }}" value="{{ $cart->quantity }}"
+                                        disabled>
+                                    <span class="inc qtybtn"
+                                        onclick="changeQuantity({{ $cart->product_id }}, 'inc', this)">+</span>
+                                </div>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -637,16 +654,16 @@
             console.log('Removing product with ID ' + id);
             let url = `/daban/cart/${id}`;
             axios.delete(url).then((response) => {
-              console.log('Product removed successfully:', response);
-              toastr.success(response.data.message);
-              ref.closest('li').remove();
-              document.getElementById('carts-count').innerHTML = response.data.cartCount;
-              document.getElementById('carts-total').innerHTML = response.data.cartTotal;
+                console.log('Product removed successfully:', response);
+                toastr.success(response.data.message);
+                ref.closest('li').remove();
+                document.getElementById('carts-count').innerHTML = response.data.cartCount;
+                document.getElementById('carts-total').innerHTML = response.data.cartTotal;
             }).catch((error) => {
-              console.log('Error removing product:', error);
-              toastr.error(error.response.data.message);
+                console.log('Error removing product:', error);
+                toastr.error(error.response.data.message);
             })
-          }
+        }
 
 
 
@@ -674,10 +691,10 @@
 
         function payNow() {
             let data = {
-                region: document.getElementById('region').value
-                , town: document.getElementById('town').value
-                , address: document.getElementById('address').value
-            , }
+                region: document.getElementById('region').value,
+                town: document.getElementById('town').value,
+                address: document.getElementById('address').value,
+            }
             axios.post('{{ route('payment') }}', data)
                 .then((response) => {
                     toastr.success(response.data.message);
@@ -689,15 +706,14 @@
                     toastr.error(error.response.data.message);
                 })
         }
-
     </script>
 
 
     @if (session('toastr'))
-    <script>
-        var toastrData = {!! json_encode(session('toastr')) !!};
-        toastr[toastrData.type](toastrData.message);
-    </script>
+        <script>
+            var toastrData = {!! json_encode(session('toastr')) !!};
+            toastr[toastrData.type](toastrData.message);
+        </script>
     @endif
 
 </body>
