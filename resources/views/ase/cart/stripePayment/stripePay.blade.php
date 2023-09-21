@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> Daban| Checkout</title>
+    <title> Daban| StripePayment</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,7 +31,6 @@
         .toast-message {
             font-size: 16px !important;
         }
-        
     </style>
 
 </head>
@@ -201,132 +200,21 @@
         <!-- Start Checkout Area  -->
         <div class="axil-checkout-area axil-section-gap">
             <div class="container">
-                <form id="form" onsubmit="event.preventDefault(); payNow();">
-                    @csrf
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="axil-checkout-notice">
-                                <div class="axil-toggle-box">
-                                    @if (auth()->guest())
-                                        <div class="toggle-bar"><i class="fas fa-user"></i> Returning customer ? <a
-                                                href="{{ route('login') }}" class="toggle-btn">Click here to
-                                                login</a>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="axil-checkout-billing">
-                                <h4 class="title mb--40">Billing details</h4>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Full Name <span>*</span></label>
-                                            @if (auth()->check() && auth()->user()->id !== $user->id)
-                                                <input type="text" value="{{ auth()->user()->UsersName }}"
-                                                    {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
-                                            @else
-                                                <input type="text" value=""
-                                                    {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Country/ Region <span>*</span></label>
-                                    <select id="region">
-                                        <option value="Pal">Palestine</option>
-                                        <option value="Eng">England</option>
-                                        <option value="Zeal">New Zealand</option>
-                                        <option value="Switzer">Switzerland</option>
-                                        <option value="Kindom">United Kindom (UK)</option>
-                                        <option value="USA">United States (USA)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Street Address <span>*</span></label>
-                                    <input type="text" id="address" class="mb--15"
-                                        placeholder="House number and street name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Town/ City <span>*</span></label>
-                                    <input type="text" id="town">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone <span>*</span></label>
-                                    @if (auth()->check() && auth()->user()->id !== $user->id)
-                                        <input type="number" value="{{ auth()->user()->phone }}"
-                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
-                                    @else
-                                        <input type="number" value=""
-                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label>Email Address <span>*</span></label>
-
-                                    @if (auth()->check() && auth()->user()->id !== $user->id)
-                                        <input type="email" value="{{ auth()->user()->email }}"
-                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
-                                    @else
-                                        <input type="email" value=""
-                                            {{ auth()->check() && auth()->user()->id === $user->id ? '' : 'disabled' }}>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="axil-order-summery order-checkout-summery">
-                                <h5 class="title mb--20">Your Order</h5>
-                                <div class="summery-table-wrap">
-                                    <table class="table summery-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Subtotal</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($carts as $cart)
-                                                <tr class="order-product">
-                                                    <td>{{ $cart->product->productName }}<span class="quantity">
-                                                            x{{ $cart->quantity }}</span></td>
-                                                    <td>${{ $cart->quantity * (!$cart->product->flag ? $cart->product->price : $cart->product->discount) }}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-
-                                            <tr class="order-total">
-                                                <td>Total</td>
-                                                <td class="order-total-amount">${{ $total }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="order-payment-method">
-
-                                    <div class="single-payment">
-                                        <div class="input-group justify-content-between align-items-center">
-                                            <input type="radio" id="radio6" name="payment" checked>
-                                            <label for="radio6">Stripe</label>
-                                            <img class="payment-stripe" src="{{ asset('fas/assets/images/others/payment.png') }}"
-                                                alt="Stripe payment">
-                                        </div>
-                                        <p>Stripe is a suite of APIs powering online payment processing and commerce
-                                            solutions for internet businesses of all sizes. Accept payments and scale
-                                            faster.</p>
-                                    </div>
-                                </div>
-                                <button type="submit" class="axil-btn btn-bg-primary checkout-btn">Process to
-                                    Checkout</button>
-                            </div>
-                        </div>
-                    </div>
+                <div id="payment-message" style="display: none;" class="alert alert-info"></div>
+                
+                <form action="" method="POST" id="payment-form">
+                    <div id="payment-element"></div>
+                    <button type="submit" id="submit" class="axil-btn btn-bg-primary checkout-btn">
+                        <span id="button-text">Pay Now</span>
+                        <span id="spinner" style="display:none;">Processing...</span>
+                    </button>
                 </form>
             </div>
         </div>
         <!-- End Checkout Area  -->
 
     </main>
+
 
 
     <div class="service-area">
@@ -385,49 +273,32 @@
         <div class="footer-top separator-top">
             <div class="container">
                 <div class="row">
-
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="col-lg-3 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Support</h5>
-<<<<<<< HEAD
-                            <div class="logo mb--30" style=" margin-bottom: 15px;">
-                                <a href="{{ route('home') }}">
-                                    {{-- <img class="light-logo" src="{{ asset('fas/assets/images/logo/daban_grey.png') }}" --}}
-                                    <img class="light-logo" style="opacity: 0.6; filter: grayscale(1); height: 100px;"
-                                        src="{{ asset('fas/assets/images/logo/Daban.jpg') }}" alt="Logo Images">
-=======
                             <div class="logo mb--30">
                                 <a href="index.html">
                                     <img class="light-logo" src="{{ asset('fas/assets/images/logo/Daban.jpg') }}"
                                         alt="Logo Images" width="120" height="80">
->>>>>>> a3be5ab5940ce1a94174911d58a81b2b5c5f3f1e
                                 </a>
                             </div>
                             <div class="inner">
+                                <p><i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}</p>
 
                                 <ul class="support-list-item">
-                                    <i class="far fa-map-marker-alt"></i> &nbsp; {{ $support->address }}
-                                    <li>
-                                        <a href="https://mail.google.com/mail/u/0/#inbox">
-                                            <i class="fal fa-envelope-open"></i>
-                                            &nbsp; {{ $support->email }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="tel:{{ $support->phone }}">
-                                            <i class="fal fa-phone-alt"></i>
-                                            &nbsp; {{ $support->phone }}
-                                        </a>
-                                    </li>
+                                    <li><a href="https://mail.google.com/mail/u/0/#inbox"> <i
+                                                class="fal fa-envelope-open"></i> &nbsp;
+                                            {{ $support->email }}</a></li>
+                                    <li><a href="tel:{{ $support->phone }}"> <i class="fal fa-phone-alt"></i> &nbsp;
+                                            {{ $support->phone }}</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="col-lg-3 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
@@ -439,9 +310,8 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-
                     <!-- Start Single Widget  -->
-                    <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="col-lg-3 col-sm-6">
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Quick Link</h5>
                             <div class="inner">
@@ -455,31 +325,31 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-
-                    {{-- <!-- Start Single Widget  -->
-                    <div class="col-lg-1 col-md-6 col-sm-6">
+                    <!-- Start Single Widget  -->
+                    <div class="col-lg-3 col-sm-6">
                         <div class="axil-footer-widget">
+                            <h5 class="widget-title">Download App</h5>
                             <div class="inner">
-                                <div style="background-color: #f6f7fb; width: 2px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Widget  --> --}}
-
-                    <!-- Start Single Widget (Map Widget Takes Two Columns) -->
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="axil-footer-widget">
-                            {{-- <h5 class="widget-title">Location</h5> --}}
-                            <div class="inner">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3401.743066883534!2d34.455341!3d31.5037454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14fd7f711080143d%3A0xe82e58c9eaecea6f!2z2LTYsdmD2Kkg2LbYqNin2YYg2YTZhNij2KzZh9iy2Kkg2KfZhNmD2YfYsdio2KfYptmK2Kkg2Ygg2KPYr9mI2KfYqiDYp9mE2LrYp9iy!5e0!3m2!1sen!2s!4v1694919425401!5m2!1sen!2s"
-                                    width="100%" height="308" style="border:0;" allowfullscreen=""
-                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <span>Save $3 With App & New User only</span>
+                                <div class="download-btn-group">
+                                    <div class="qr-code">
+                                        <img src="{{ asset('fas/assets/images/others/qr.png') }}" alt="Axilthemes">
+                                    </div>
+                                    <div class="app-link">
+                                        <a href="#">
+                                            <img src="{{ asset('fas/assets/images/others/app-store.png') }}"
+                                                alt="App Store">
+                                        </a>
+                                        <a href="#">
+                                            <img src="{{ asset('fas/assets/images/others/play-store.png') }}"
+                                                alt="Play Store">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-
                 </div>
             </div>
         </div>
@@ -514,18 +384,9 @@
                             class="copyright-right d-flex flex-wrap justify-content-xl-end justify-content-center align-items-center">
                             <span class="card-text">Accept For</span>
                             <ul class="payment-icons-bottom quick-link">
-<<<<<<< HEAD
-                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-1.png') }}"
-                                        alt="paypal cart">
-                                </li>
                                 <li><img src="{{ asset('fas/assets/images/icons/cart/cart-2.png') }}"
                                         alt="paypal cart">
                                 </li>
-=======
-                                <li><img src="{{ asset('fas/assets/images/icons/cart/cart-2.png') }}"
-                                        alt="paypal cart">
-                                </li>
->>>>>>> a3be5ab5940ce1a94174911d58a81b2b5c5f3f1e
                                 <li><img src="{{ asset('fas/assets/images/icons/cart/cart-5.png') }}"
                                         alt="paypal cart">
                                 </li>
@@ -540,87 +401,139 @@
     <!-- End Footer Area  -->
 
     <!-- Header Search Modal End -->
-    <div class="header-search-modal" id="header-search-modal">
-        <button class="card-close sidebar-close"><i class="fas fa-times"></i></button>
-        <div class="header-search-wrap">
-            <div class="card-header">
-                <form action="#">
-                    @csrf
-                    <div class="input-group">
-                        <input type="search" class="form-control" onkeyup="productSearch(this)" name="prod-search"
-                            id="prod-search" placeholder="Write Something....">
-                        <button type="submit" class="axil-btn btn-bg-primary"><i class="far fa-search"></i></button>
-                    </div>
-                </form>
-            </div>
-            <div class="card-body">
-                <div class="search-result-header">
-                    <span class="filter-results">Result (<span style="color: #3577F0; font-size:19px;">0</span>)
-                        Found</span>
-                    <a href="{{ route('front.sidebar') }}" class="view-all">View All</a>
-                </div>
-                <div class="psearch-results" id="searchContainer">
-
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Header Search Modal End -->
 
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // This is your test publishable API key.
+        const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
 
+        let elements;
 
-    <div class="cart-dropdown" id="cart-dropdown">
-        <div class="cart-content-wrap">
-            <div class="cart-header">
-                <h2 class="header-title">Cart review</h2>
-                <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
-            </div>
+        initialize();
+        checkStatus();
 
-            <div class="cart-body">
-                <ul class="cart-item-list" id="cart-list-container">
-                    @foreach ($carts as $cart)
-                        <li class="cart-item" id="li_{{ $cart->product_id }}">
-                            <div class="item-img">
-                                <a href="{{ route('front.productItem', $cart->product_id) }}"><img
-                                        src="{{ Storage::url($cart->product->image) }}" alt="Commodo Blown Lamp"></a>
-                                <button class="close-btn"
-                                    onclick="removeProduct({{ $cart->product_id }}, this ,'list')"><i
-                                        class="fas fa-times"></i></button>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title"><a
-                                        href="{{ route('front.productItem', $cart->product_id) }}">{{ $cart->product->productName }}</a>
-                                </h3>
-                                <div class="item-price"><span
-                                        class="currency-symbol">$</span>{{ !$cart->product->flag ? $cart->product->price : $cart->product->discount }}
-                                </div>
-                                <div class="pro-qty item-quantity">
-                                    <span class="dec qtybtn"
-                                        onclick="changeQuantity({{ $cart->product_id }}, 'dec', this)">-</span>
-                                    <input type="number" class="quantity-input"
-                                        id="quantity_{{ $cart->product_id }}" value="{{ $cart->quantity }}"
-                                        disabled>
-                                    <span class="inc qtybtn"
-                                        onclick="changeQuantity({{ $cart->product_id }}, 'inc', this)">+</span>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="cart-footer">
-                <h3 class="cart-subtotal">
-                    <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount">${{ $total }}</span>
+        document
+            .querySelector("#payment-form")
+            .addEventListener("submit", handleSubmit);
 
-                </h3>
-                <div class="group-btn">
-                    <a href="{{ route('cart') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
-                    <a href="{{ route('checkout') }}" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        async function initialize() {
+            const {
+                clientSecret
+            } = await fetch("{{ route('stripe.paymentIntent',$checkout->id) }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "_token": "{{ csrf_token() }}"
+                }),
+            }).then((r) => r.json());
+
+            elements = stripe.elements({
+                clientSecret
+            });
+
+            const linkAuthenticationElement = elements.create("linkAuthentication");
+            linkAuthenticationElement.mount("#link-authentication-element");
+
+            const paymentElementOptions = {
+                layout: "tabs",
+            };
+
+            const paymentElement = elements.create("payment", paymentElementOptions);
+            paymentElement.mount("#payment-element");
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            setLoading(true);
+
+            const {
+                error
+            } = await stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                    // Make sure to change this to your payment completion page
+                    return_url: "{{ route('stripe.return') }}",
+                    receipt_email: emailAddress,
+                },
+            });
+
+            // This point will only be reached if there is an immediate error when
+            // confirming the payment. Otherwise, your customer will be redirected to
+            // your `return_url`. For some payment methods like iDEAL, your customer will
+            // be redirected to an intermediate site first to authorize the payment, then
+            // redirected to the `return_url`.
+            if (error.type === "card_error" || error.type === "validation_error") {
+                showMessage(error.message);
+            } else {
+                showMessage("An unexpected error occurred.");
+            }
+
+            setLoading(false);
+        }
+
+        // Fetches the payment intent status after payment submission
+        async function checkStatus() {
+            const clientSecret = new URLSearchParams(window.location.search).get(
+                "payment_intent_client_secret"
+            );
+
+            if (!clientSecret) {
+                return;
+            }
+
+            const {
+                paymentIntent
+            } = await stripe.retrievePaymentIntent(clientSecret);
+
+            switch (paymentIntent.status) {
+                case "succeeded":
+                    showMessage("Payment succeeded!");
+                    break;
+                case "processing":
+                    showMessage("Your payment is processing.");
+                    break;
+                case "requires_payment_method":
+                    showMessage("Your payment was not successful, please try again.");
+                    break;
+                default:
+                    showMessage("Something went wrong.");
+                    break;
+            }
+        }
+
+        // ------- UI helpers -------
+
+        function showMessage(messageText) {
+            const messageContainer = document.querySelector("#payment-message");
+
+            messageContainer .style.display = "block";
+            messageContainer.textContent = messageText;
+
+            setTimeout(function() {
+                messageContainer.style.display = "none";
+                messageContainer.textContent = "";
+            }, 4000);
+        }
+
+        // Show a spinner on payment submission
+        function setLoading(isLoading) {
+            if (isLoading) {
+                // Disable the button and show a spinner
+                document.querySelector("#submit").disabled = true;
+                document.querySelector("#spinner").style.display = "inline";
+                document.querySelector("#button-text").style.display = "none";
+            } else {
+                document.querySelector("#submit").disabled = false;
+                document.querySelector("#spinner").style.display = "none";
+                document.querySelector("#button-text").style.display = "inline";
+            }
+        }
+    </script>
+
 
     <!-- JS
 ============================================ -->
@@ -649,92 +562,6 @@
     <script src="{{ asset('js/axios.js') }}"></script>
     <script src="{{ asset('js/Crud.js') }}"></script>
     <script src="{{ asset('js/sweet.js') }}"></script>
-
-
-    <script>
-        //Product Search
-        function productSearch(e) {
-            axios.get(`/daban/search?q=${e.value}`)
-                .then(function(response) {
-                    console.log(response);
-                    document.getElementById('searchContainer').innerHTML = response.data;
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        }
-
-        // Remove Product from Slide Cart
-        function removeProduct(id, ref) {
-            console.log('Removing product with ID ' + id);
-            let url = `/daban/cart/${id}`;
-            axios.delete(url).then((response) => {
-                console.log('Product removed successfully:', response);
-                toastr.success(response.data.message);
-                ref.closest('li').remove();
-                document.getElementById('carts-count').innerHTML = response.data.cartCount;
-                document.getElementById('carts-total').innerHTML = response.data.cartTotal;
-            }).catch((error) => {
-                console.log('Error removing product:', error);
-                toastr.error(error.response.data.message);
-            })
-        }
-
-
-
-        //Change Quantity
-        function changeQuantity(id, type, ref) {
-            setTimeout(() => {
-                console.log(document.getElementById('quantity_' + id).value)
-                if (document.getElementById('quantity_' + id).value < 1) {
-                    removeProduct(id, ref)
-                } else {
-                    axios.put(`/daban/cart/${id}`, {
-                        type: type
-                    }).then((response) => {
-                        console.log(response.data);
-                        document.getElementById('carts-total').innerHTML = response.data.total;
-                    }).catch((error) => {
-                        console.log(error.response.data);
-                    })
-                }
-            }, 1);
-        }
-
-
-
-
-        function payNow() {
-            let data = {
-                region: document.getElementById('region').value,
-                town: document.getElementById('town').value,
-                address: document.getElementById('address').value,
-            }
-<<<<<<< HEAD
-            axios.post('{{ route('payment') }}', data)
-=======
-            axios.post('{{ route('stripe.create') }}', data)
->>>>>>> a3be5ab5940ce1a94174911d58a81b2b5c5f3f1e
-                .then((response) => {
-                    toastr.success(response.data.message);
-                    setTimeout(() => {
-                        window.location.href = response.data.link;
-                    }, 100);
-                })
-                .catch((error) => {
-                    toastr.error(error.response.data.message);
-                })
-        }
-    </script>
-
-
-    @if (session('toastr'))
-        <script>
-            var toastrData = {!! json_encode(session('toastr')) !!};
-            toastr[toastrData.type](toastrData.message);
-        </script>
-    @endif
-
 </body>
 
 </html>

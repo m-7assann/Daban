@@ -27,7 +27,7 @@ class PayPalController extends Controller
             'town' => 'required|string|min:3|max:200',
         ]);
 
-        if ($validator->fails()) {
+        if ($validator->fails()) {      
             return response()->json([
                 'message' => $validator->getMessageBag()->first(),
             ], Response::HTTP_BAD_REQUEST);
